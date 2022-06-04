@@ -1,5 +1,11 @@
 # Spring-framework-specialization
-
+This specialization course is available on <a href="https://www.coursera.org/specializations/spring-framework">Coursera</a>.
+It is a 4 months course.
+The course contains following modules :
+ * <a href="https://www.coursera.org/learn/spring-ecosystem-and-core?specialization=spring-framework">Spring - Ecosystem and Core</a>
+ * <a href="https://www.coursera.org/learn/spring-mvc-rest-controller?specialization=spring-framework">Spring MVC, Spring Boot and Rest Controllers</a>
+ * <a href="https://www.coursera.org/learn/spring-repositories?specialization=spring-framework">Spring Data Repositories</a>
+ * <a href="https://www.coursera.org/learn/spring-cloud-overview?specialization=spring-framework">Spring - Cloud Overview</a>
 
 ### References
   * <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/">Spring Documentation</a>
