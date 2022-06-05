@@ -16,7 +16,7 @@ public class Student {
 	public Student() {
 		super();
 	}
-	 
+	
 	public Student(long id, String firstName, String surname, String dept, Double fees) {
 		super();
 		this.id = id;

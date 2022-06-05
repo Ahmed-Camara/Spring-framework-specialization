@@ -1,13 +1,18 @@
 package com.student.controller;
 
+import java.net.URI;
 import java.util.Collection;
 import java.util.Optional;
 
 import javax.inject.Inject;
 
 import org.springframework.core.env.Environment;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -49,6 +54,21 @@ public class StudentController {
 	@GetMapping("/single")
 	public Student getSingleStudent(@RequestParam("id") Optional<Long> optional) {
 		return studentService.get(optional.orElse(1l));
+	}
+	
+	@PostMapping(produces=MediaType.APPLICATION_JSON_VALUE,consumes=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<String> addStudent(@RequestBody Student student) {
+		studentService.add(student);
+		if(student.getId() > 0) {
+			
+			URI uri = URI.create("/college/student/"+student.getId());
+			
+			System.out.println(uri);
+			
+			return ResponseEntity.accepted().location(uri).build();
+		}
+		
+		return ResponseEntity.badRequest().build();
 	}
 	
 	@GetMapping("/test")

@@ -33,7 +33,10 @@ public class StudentServiceImpl implements StudentService {
 
 	@Override
 	public void add(Student student) {
-		// TODO Auto-generated method stub
+		
+		if(student.getFirstName() != null && student.getSurname() != null && student.getDept() != null)
+			System.out.println("Valid");
+			studentDao.add(student);
 
 	}
 
