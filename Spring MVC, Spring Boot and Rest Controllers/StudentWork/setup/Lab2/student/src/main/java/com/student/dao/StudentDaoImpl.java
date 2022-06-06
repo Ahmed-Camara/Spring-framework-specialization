@@ -3,15 +3,19 @@ package com.student.dao;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.NavigableMap;
+import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 import javax.inject.Named;
 
+import com.student.core.College;
 import com.student.core.Student;
 
 @Named
 public class StudentDaoImpl implements StudentDao {
 	private Map<Long, Student> students;
-	//private NavigableMap<Long,College>colleges;
+	private NavigableMap<Long,College>colleges;
 	{
 		students = new HashMap<>();
 		students.put(1L, new Student(1L, "Eric", "Colbert", "English Literature", 145.00));
@@ -20,11 +24,11 @@ public class StudentDaoImpl implements StudentDao {
 		students.put(4L, new Student(4L,"Ester","Freeman", "English Literature", 145.00));
 		students.put(5L, new Student(5L,"Ann","Mouvier", "French", 125.00));
 		
-		/*colleges = new TreeMap<Long, College>();
+		colleges = new TreeMap<Long, College>();
 		colleges.put(2L, new College("Texas State University", "601 University Dr", "San Marcos", "Texas"));
 		colleges.put(4L, new College("University of South Florida", "4202 E Fowler Ave", "Tampa", "Florida"));
 		colleges.put(6L, new College("Boston College", "140 Commonwealth Avenue", "Chestnut Hill", "Massachusetts"));
-		colleges.put(Long.MAX_VALUE, new College("Tulane", "6823 St Charles Ave", "New Orleans", "Louisiana"));*/
+		colleges.put(Long.MAX_VALUE, new College("Tulane", "6823 St Charles Ave", "New Orleans", "Louisiana"));
 	}
 	
 	@Override
@@ -35,14 +39,12 @@ public class StudentDaoImpl implements StudentDao {
 
 	@Override
 	public Collection<Student> getAll() {
-		/*Collection<Student> studentList = students.values().stream()
+		Collection<Student> studentList = students.values().stream()
 				.map(p-> {
 					p.setCollege(colleges.ceilingEntry(p.getId()).getValue());
 					return p;
 				}).collect(Collectors.toList());
-		return studentList;*/
-		
-		return students.values();
+		return studentList;
 	}
 
 	@Override

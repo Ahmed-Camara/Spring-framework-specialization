@@ -1,6 +1,7 @@
 package com.student.service;
 
 import java.util.Collection;
+import java.util.stream.Collectors;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -24,11 +25,15 @@ public class StudentServiceImpl implements StudentService {
 		// TODO Auto-generated method stub
 		return studentDao.getAll();
 	}
-
+	
 	@Override
-	public Collection<Student> getAllStudentsInDepartement(String departement, String lastNameLike) {
-		// TODO Auto-generated method stub
-		return null;
+	public Collection<Student> getAllStudentsInDepartement(String departement, String lastNameLike){
+		
+		return studentDao.getAll()
+				.stream()
+				.filter(p -> p.getDept().equals(departement))
+				.filter(p -> p.getSurname().contains(lastNameLike))
+				.collect(Collectors.toList());
 	}
 
 	@Override

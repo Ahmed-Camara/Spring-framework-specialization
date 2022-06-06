@@ -2,11 +2,11 @@ package com.student.core;
 
 //import javax.xml.bind.annotation.XmlRootElement;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
-//@JsonInclude(Include.NON_NULL)
-//@XmlRootElement
+@JsonInclude(Include.NON_NULL)
+@XmlRootElement
 public class Student {
  
 	private long id;

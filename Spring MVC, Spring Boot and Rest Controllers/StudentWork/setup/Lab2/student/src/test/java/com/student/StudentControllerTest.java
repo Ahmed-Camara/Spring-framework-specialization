@@ -85,4 +85,29 @@ public class StudentControllerTest {
 		
 		System.out.println(responseEntity.getBody());
 	}
+	
+	@Test
+	void testGetOneRequestParam() {
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("accept", MediaType.APPLICATION_XML_VALUE);
+		
+		ResponseEntity<Student> responseEntity = new RestTemplate().exchange("/single?id={id}", HttpMethod.GET,
+				new HttpEntity<String>(headers),Student.class, 3);
+		System.out.println(responseEntity.getBody());
+		
+		headers = new HttpHeaders();
+		headers.add("accept", MediaType.APPLICATION_JSON_VALUE);
+		
+		responseEntity = new RestTemplate().exchange("/single?id={id}", HttpMethod.GET,
+				new HttpEntity<String>(headers),Student.class, 3);
+		System.out.println(responseEntity.getBody());
+		
+		
+		headers = new HttpHeaders();
+		headers.add("accept", "application/xml, application/json");
+		
+		responseEntity = new RestTemplate().exchange("/single?id={id}", HttpMethod.GET,
+				new HttpEntity<String>(headers),Student.class, 3);
+		System.out.println(responseEntity.getBody());
+	}
 }
